@@ -48,7 +48,7 @@ function draw() {
   textSize(50);
   
   // 文字と文字の位置
-  text('2018/11/07', 200, 500);    
+  text('2018/11/07', 200, 600);    
     
   // - - - - - - マウスが押されたら
   if (mouseIsPressed) {
