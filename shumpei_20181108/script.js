@@ -30,8 +30,6 @@ function draw() {
   text('K A N P A I', 200, 400);
 
   // - - - - - ここから好きなもの
-  // 色をマウスの位置で変える
-  fill(mouseX / 4, mouseX / 4, mouseX / 4);
   
   // 文字の大きさ
   textSize(50);
