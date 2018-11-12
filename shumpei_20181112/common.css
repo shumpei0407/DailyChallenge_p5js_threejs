@@ -16,4 +16,25 @@ canvas {
   transform: translateY(-50%) translateX(-50%);
   -webkit-transform: translateY(-50%) translateX(-50%);
 }
-
+box17{
+    margin:2em 0;
+    position: relative;
+    padding: 0.5em 1.5em;
+    border-top: solid 2px white;
+    border-bottom: solid 2px white;
+}
+box17:before, .box17:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: white;
+}
+box17:before {left: 10px;}
+box17:after {right: 10px;}
+box17 p {
+    margin: 0; 
+    padding: 0;
+}
