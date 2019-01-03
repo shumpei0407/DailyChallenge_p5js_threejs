@@ -17,6 +17,7 @@ function draw(){
  v.div(100);
  ambientLight(100);
  directionalLight(255,random(255),random(255));
+ translate(mouseX - width/2,mouseY - height/2);
  rotateX(angle);
  rotateY(angle*1.3);
  rotateZ(angle*0.7);
