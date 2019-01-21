@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
+  <title>box_threejs</title>
+  <script>
+    // ページの読み込みを待つ
+    window.addEventListener('load', init);
+
+    function init() {
+
+      // サイズを指定
+      const width = 960;
+      const height = 540;
+
+      // レンダラーを作成
+      const renderer = new THREE.WebGLRenderer({
+        canvas: document.querySelector('#myCanvas')
+      });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(width, height);
+
+      // シーンを作成
+      const scene = new THREE.Scene();
+
+      // カメラを作成
+      const camera = new THREE.PerspectiveCamera(50, width / height);
+      camera.position.set(0, 0, +1000);
+
+      // 箱を作成
+      const geometry = new THREE.BoxGeometry(500, 500, 500);
+      //const material = new THREE.MeshNormalMaterial();
+      const material = new THREE.MeshPhongMaterial({ color: 0xff84ff });
+      //const material = new THREE.MeshNormalMaterial(); 
+      const box = new THREE.Mesh(geometry, material);
+      scene.add(box);
+    
+      // 平行光源
+      const directionalLight = new THREE.DirectionalLight(0x00ffff);
+      directionalLight.position.set(10, 10, 10);
+      scene.add(directionalLight);
+      
+      // ポイント光源
+      const pointLight = new THREE.PointLight(0xffffff, 2, 1000);
+      scene.add(pointLight);
+      const pointLightHelper = new THREE.PointLightHelper(pointLight, 100);
+      scene.add(pointLightHelper);
+        
+      // シーンに追加
+      scene.add(directionalLight);
+
+      tick();
+
+      // 毎フレーム時に実行されるループイベントです
+      function tick() {
+        //box.rotation.x += 0.005;
+        box.rotation.y += 0.005;
+        box.rotation.z += 0.005;
+        renderer.render(scene, camera); // レンダリング
+          
+      // ライトを周回させる
+        pointLight.position.set(
+        500 * Math.sin(Date.now() / 500),
+        500 * Math.sin(Date.now() / 500),
+        500 * Math.cos(Date.now() / 500)
+          );
+
+        requestAnimationFrame(tick);
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas id="myCanvas"></canvas>
+</body>
+</html>
