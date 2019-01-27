@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>sepia</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
+    <script>
+      // ページの読み込みを待つ
+      window.addEventListener('load', init);
+      function init() {
+        // サイズを指定
+        const width = 960;
+        const height = 540;
+        let rot = 10; // 角度
+          
+        // レンダラーを作成
+        const renderer = new THREE.WebGLRenderer({
+          canvas: document.querySelector('#myCanvas')
+        });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(width, height);
+        // シーンを作成
+        const scene = new THREE.Scene();
+        // カメラを作成
+        const camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
+        // 星屑を作成します (カメラの動きをわかりやすくするため)
+        createStarField();
+        function createStarField() {
+          // 形状データを作成
+          const geometry = new THREE.Geometry();
+          // 配置する範囲
+          const SIZE = 150;
+          // 配置する個数
+          const LENGTH = 2000;
+          for (let i = 0; i < LENGTH; i++) {
+            geometry.vertices.push(
+              new THREE.Vector3(
+                SIZE * (Math.random() - 0.2),
+                SIZE * (Math.random() - 0.5),
+                SIZE * (Math.random() - 0.5)
+              )
+            );
+          }
+          // マテリアルを作成
+          const material = new THREE.PointsMaterial({
+            // 一つ一つのサイズ
+            size: 1000,
+            // 色
+            color: 0x24140e,
+            opacity: 0.9,
+            blending: THREE.AdditiveBlending,
+            transparent: true,
+            depthTest: false
+          });
+          // 物体を作成
+          const mesh = new THREE.Points(geometry, material);
+          scene.add(mesh);
+        }
+        tick();
+        // 毎フレーム時に実行されるループイベントです
+        function tick() {
+          rot += 8;
+          // ラジアンに変換する
+          const radian = (rot * Math.PI) / 180;
+          // 角度に応じてカメラの位置を設定
+          camera.position.x = 1 * Math.sin(radian);
+          camera.position.z = 10000 * Math.cos(radian);
+          // 原点方向を見つめる
+          camera.lookAt(new THREE.Vector3(10, 0, 0));
+          // レンダリング
+          renderer.render(scene, camera);
+          requestAnimationFrame(tick);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="myCanvas"></canvas>
+  </body>
