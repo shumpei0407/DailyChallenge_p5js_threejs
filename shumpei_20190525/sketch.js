@@ -13,8 +13,8 @@ function mousePressed(){
 }
 
 function draw(){
-    background(25);
-//    blendMode(LIGHTEST);
+    background(50);
+    blendMode(HARD_LIGHT);
     for(var i= 0;i < particles.length;i++){
     particles[i].update();
     particles[i].show();
