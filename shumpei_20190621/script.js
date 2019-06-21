@@ -1,20 +1,26 @@
 var video;
-var vScale = 16;
+var vScale = 10;
+var particles = [];
 
-var particle;
 
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  createCanvas(displayWidth, displayHeight);
   pixelDensity(1);
   video = createCapture(VIDEO);
-  video.size(width/vScale,height/vScale);
-  particle = new Particle(windowWidth/2,windowHeight/2);
-  
+  video.size(width/vScale, height/vScale);
+  for (var i = 0; i < 1000; i++) {
+    particles[i] = new Particle(random(width), random(height));
+  }
+//  slider = createSlider(0, 255, 127);
+  background(51);
 }
 
 function draw() {
-  background(255);
-  video.loadPixcel();
-  particle.update();
-  particle.show();
+//  background(random(255),random(255),random(200,255),1);
+  video.loadPixels();
+  for(var i = 0; i < particles.length; i++) {
+    particles[i].update();
+    particles[i].show();
+  }
 }
+
