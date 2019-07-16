@@ -3,7 +3,7 @@ var isDarkest = true;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  frameRate(70);
+  frameRate(80);
   noStroke();
   colors = [
     color(104, 204, 255,300),
@@ -37,9 +37,9 @@ function draw() {
         fill(colors[i]);
         var angle = TWO_PI / 4 * i + frameCount;
 //        angle += (x + y) % 2 == 0 ? -PI: PI;
-        angle += (x + y) % 2 == 0? -HALF_PI: HALF_PI;
+//        angle += (x + y) % 2 == 0? -HALF_PI: HALF_PI;
         angle += (x + y) % 2 == 0? -QUARTER_PI: QUARTER_PI;
-        ellipse(w + r * tan(angle)*cos(angle), h + r * tan(angle)* sin(angle), random(20,80), random(20,80));
+        ellipse(w + r * sin(angle)*cos(angle), h + r * sin(angle)* sin(angle), random(5), random(200));
       }
     }
   }
