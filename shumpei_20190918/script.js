@@ -19,11 +19,17 @@ function setup() {
   pg2.stroke(255);
 	
   for(var i = 0; i < width + 10; i+=10){
-    pg2.strokeWeight(i/50)
-//    pg2.line(0,i,pmouseX, pmouseY);
-    pg2.line(0,i,1500,i*2);
-    pg2.line(0,i*2,1500,i*4);
-    pg2.line(0,i*3,1500,i*6);
+    pg2.strokeWeight(i/20);
+    pg2.stroke(255);
+    pg2.line(0,i,1500,i);
+    pg2.strokeWeight(i/25);
+    pg2.stroke(0);
+    pg2.line(0,i,random(0,1500),i);
+//    pg2.stroke(0);
+//    pg2.line(0,i,random(500,1500),i);
+//    pg2.line(0,i,1500,i/2);
+//    pg2.line(width,i,-1500,-i);
+//    pg2.line(0,i,1500,i*6);
   }
 }
 
@@ -32,7 +38,7 @@ function draw() {
   y = Math.sin(rad)*10;
   background(0,0,0);
 　const distance = dist(mouseX, mouseY, pmouseX, pmouseY);
-　pg.strokeWeight(distance);
+  pg.strokeWeight(distance);
   pg.background(0);
   pg.fill(255);
   pg.ellipse(mouseX, mouseY,450);
@@ -48,7 +54,7 @@ function draw() {
   textSize(22);
   text('NUMBER', 25, 40);
   textSize(50);
-  text('175', 25, 100);
+  text('176', 25, 100);
   textSize(22);
   textAlign(RIGHT);
   text('@shumpei0407', width - 50, height - 50);
