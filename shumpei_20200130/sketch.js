@@ -8,11 +8,11 @@ function setup() {
 }
 
 function draw() {
-  blendMode(ADD);
+//  blendMode(DIFFERENCE);
   background(105, 12, 215); 
   fill(195, 209, 53);
   stroke(47, 52, 80);
-  strokeWeight(1);
+//  strokeWeight(1);
   rect(0,0,800,700);
 
   for (let x = 0; x <= width; x = x + 10) {
@@ -24,10 +24,10 @@ function draw() {
       const angle = xAngle * (x / width) + yAngle * (y / height);
 
       const myX = x + 50 * sin(2 * PI * t + angle);
-      const myY = y + 50 * cos(2 * PI * t + angle);
+      const myY = y + 50 * sin(2 * PI * t + angle);
 
-      strokeWeight(random(1));
-      stroke(105, 12, 215,30);
+      strokeWeight(random(1,2));
+      stroke(255,20);
 //      rect(myX, myY, 100,100); 
       line(0,700,myX, myY); 
       line(800,700,myX, myY); 
@@ -41,16 +41,19 @@ function draw() {
       line(width,height/2,myX, myY); 
 //      stroke(35, 159, 196,50);
       line(0,height/2,myX, myY); 
+        
     }
   }
 
-  t = t + 0.01;
+  t = t + 0.02;
     
-//  fill(105, 12, 215);
-  noFill();
-  stroke(195, 209, 53);
-  strokeWeight(2);
-  ellipse(400,400,500,500);
+//  noFill(0);
+//  stroke(105, 12, 215);
+//  strokeWeight(5);
+//  rect(0,0,800,700);
+//  stroke(0);
+  fill(255);
+  ellipse(width/2,370,400,400);
     
   textFont('Oswald');
   fill(255);
@@ -60,13 +63,13 @@ function draw() {
   textSize(15);
   text('NUMBER', 50, 50);
   textSize(30);
-  text('248', 52, 80);
+  text('249', 52, 80);
   textSize(15);
   textAlign(RIGHT);
   text('@shumpei0407', width - 50, height - 50); 
   textAlign(CENTER);
-  textSize(30);
-  text('WAVE', width/2, 710);
+  textSize(15);
+  text('Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon Moon', width/2, 705);
 
 }
 
