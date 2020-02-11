@@ -14,48 +14,39 @@ function setup() {
 }
 
 function draw() {
-  background(217,51,63,10);
+  
+  background(255,255,255,10);
 
   let rms = analyzer.getLevel();
     
-  noFill();
-  strokeWeight(10);
-  stroke(255,255,255,10);
+  fill(rms*random(rms+500),rms*random(rms+200),rms*(rms+400),1);
+  strokeWeight(rms*10);
+  stroke(255,255,255,50);
 
   ellipse(width / 2, height / 2, 10 + rms * 1000, 10 + rms * 1000);
     
-    
-    
-  noFill();
-  strokeWeight(1);
-  stroke(255,255,255,10);
+  ellipse(200, height / 2, 10 + rms * 1000, 10 + rms * 1000);
 
-
-  ellipse(width / 2, height / 2, 10 + rms * 800, 10 + rms * 800);
+  ellipse(600, height / 2, 10 + rms * 1000, 10 + rms * 1000);
     
+  ellipse(400, 200, 10 + rms * 1000, 10 + rms * 1000);
     
-
-//  fill(87,209,201,200);
-  strokeWeight(1);
-  stroke(255,255,255,10);
-
-  ellipse(width / 2, height / 2, 10 + rms * 500, 10 + rms * 500);
+  ellipse(400, 600, 10 + rms * 1000, 10 + rms * 1000);
     
-
-//  fill(0);
-  strokeWeight(300);
-  stroke(0);
+  strokeWeight(100+rms*500);
+    
+  stroke(255);
   ellipse(width / 2, height / 2, 900,900);
     
   textFont('Oswald');
-  fill(255);
+  fill(25);
   strokeWeight(1);
   stroke(255);
   textAlign(LEFT);
   textSize(15);
   text('NUMBER', 50, 50);
   textSize(30);
-  text('250', 52, 80);
+  text('252', 52, 80);
   textSize(15);
   textAlign(RIGHT);
   text('@shumpei0407', width - 50, height - 50); 
