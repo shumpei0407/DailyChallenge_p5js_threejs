@@ -1,9 +1,6 @@
 let vid;
-let pic;
 
 function setup() {
-//  noCanvas();
-// frameRate(10);
   createCanvas(800, 800);
   background(255);
   vid = createVideo(
@@ -14,11 +11,10 @@ function setup() {
   vid.size(0, 0);
   vid.elt.muted = true;
     
-  drawingContext.shadowOffsetX = 5;
+  drawingContext.shadowOffsetX = 50;
   drawingContext.shadowOffsetY = -5;
-  drawingContext.shadowBlur = 100;
+  drawingContext.shadowBlur = 80;
   drawingContext.shadowColor = 'white';
-
   
 }
 
@@ -29,13 +25,12 @@ function vidLoad() {
 }
 
 function draw() {
-  blendMode(BLEND);
   background(255);
-  tint(50);
+  tint(random(30,50));
   image(vid, 0, 0);
   strokeWeight(950);
-  stroke(10);
-  fill(69,117,230,10);
+  stroke(1);
+  fill(10,10,10,10);
   ellipse(400,400,500,500);
 
 
